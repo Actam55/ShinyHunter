@@ -2,17 +2,10 @@ import pyautogui
 import time
 
 imageFolder = "Route 29"
-route29Mons = ['D:\Code\Python\ShinyHunt\Route 29\HoothootIG.png', 'D:\Code\Python\ShinyHunt\Route 29\PidgeyIG.png',
-               'D:\Code\Python\ShinyHunt\Route 29\RattataDayIG.png', 'D:\Code\Python\ShinyHunt\Route 29\RattataNightIG.png', 'D:\Code\Python\ShinyHunt\Route 29\SentretIG.png']
-route29Monsv2 = ['D:\Code\Python\ShinyHunt\Route 29 v2\HoothootIG.png', 'D:\Code\Python\ShinyHunt\Route 29 v2\PidgeyIG.png',
-                 'D:\Code\Python\ShinyHunt\Route 29 v2\RattataDayIG.png', 'D:\Code\Python\ShinyHunt\Route 29 v2\SentretIG.png']
-
-# for image in os.listdir(imageFolder):
-#     filename = os.path.basename(image)
-#     if filename[0] == 'S' and filename[1] == '-':
-#         shiny.append(image)
-#     elif filename != "NotInBattle.png" and filename != "InBattle.png":
-#         nonShiny.append(image)
+route29Mons = ['images\Route 29\HoothootIG.png', 'images\Route 29\PidgeyIG.png',
+               'images\Route 29\RattataDayIG.png', 'images\Route 29\RattataNightIG.png', 'images\Route 29\SentretIG.png']
+route29Monsv2 = ['images\Route 29 v2\HoothootIG.png', 'images\Route 29 v2\PidgeyIG.png',
+                 'images\Route 29 v2\RattataDayIG.png', 'images\Route 29 v2\SentretIG.png']
 
 
 def RunArround():
@@ -32,9 +25,8 @@ def RunRight():
     pyautogui.keyUp('right')
 
 def CheckIfInBattle():
-    if not pyautogui.locateOnScreen("NotInBattle.png", confidence=0.8):
+    if not pyautogui.locateOnScreen("images\NotInBattle.png", confidence=0.8):
         print("In battle")
-        #postEvent("Battle detected", True)
         return True
     else:
         print("Not in battle")
@@ -44,7 +36,6 @@ def CheckIfShiny():
     for image in route29Monsv2:
         if pyautogui.locateOnScreen(image):
             print("No shiny found")
-            #postEvent("Shiny found", True)
             return False
     print("Shiny found")
     return True
